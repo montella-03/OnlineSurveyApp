@@ -13,6 +13,6 @@ public class Question {
 
     private String text;
 
-    private String type; //"multiple choice", "open-ended"
+
 
 }

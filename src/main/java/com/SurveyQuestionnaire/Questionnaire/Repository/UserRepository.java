@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository extends JpaRepository<User,Long> {
     @Query(value = "SELECT * FROM users WHERE token = ?1", nativeQuery = true)
     User findByToken(String token);
+
+    User findByEmail(String name);
 }

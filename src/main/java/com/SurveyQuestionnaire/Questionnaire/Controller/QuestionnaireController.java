@@ -1,7 +1,10 @@
 package com.SurveyQuestionnaire.Questionnaire.Controller;
 
+import com.SurveyQuestionnaire.Questionnaire.Entity.Question;
 import com.SurveyQuestionnaire.Questionnaire.Entity.Survey;
 import com.SurveyQuestionnaire.Questionnaire.Entity.User;
+import com.SurveyQuestionnaire.Questionnaire.Model.AnswerModel;
+import com.SurveyQuestionnaire.Questionnaire.Model.QuestionModel;
 import com.SurveyQuestionnaire.Questionnaire.Model.SurveyModel;
 import com.SurveyQuestionnaire.Questionnaire.Model.UserModel;
 import com.SurveyQuestionnaire.Questionnaire.Service.QuestionnaireService;
@@ -9,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -30,7 +34,19 @@ public class QuestionnaireController {
     @PostMapping("/saveSurvey")
     public String save(@RequestBody SurveyModel surveyModel) {
         Survey survey = questionnaireService.save(surveyModel);
-        return "successfully saved";
+        return "successfully saved survey";
+    }
+    @PostMapping("/saveQuestion")
+    public String saveQuestions(@RequestBody QuestionModel questionModel){
+        Question question = questionnaireService.saveQuestion(questionModel);
+        return "question saved successfully";
+
+}
+    @PostMapping("/answer")
+    public void answerQuestion(@RequestParam Long questionId, @RequestBody AnswerModel answerModel, UserModel userModel) {
+        Question question = questionnaireService.getQuestionById(questionId);
+        User user = questionnaireService.getUserByEmail(userModel.getName());
+        questionnaireService.saveUserAnswer(user, question, answerModel);
     }
 
 //    @GetMapping("/verify-email")

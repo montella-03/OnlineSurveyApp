@@ -10,6 +10,7 @@ public class UserAnswer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String answer;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
@@ -19,7 +20,5 @@ public class UserAnswer {
     @JoinColumn(name = "question_id", nullable = false)
     private Question question;
 
-    @ManyToOne
-    @JoinColumn(name = "answer_id", nullable = false)
-    private Answer answer;
+
 }
