@@ -2,6 +2,7 @@ package com.SurveyQuestionnaire.Questionnaire.Service;
 
 import com.SurveyQuestionnaire.Questionnaire.Entity.Survey;
 import com.SurveyQuestionnaire.Questionnaire.Entity.User;
+import com.SurveyQuestionnaire.Questionnaire.Model.SurveyModel;
 import com.SurveyQuestionnaire.Questionnaire.Model.UserModel;
 import com.SurveyQuestionnaire.Questionnaire.Repository.SurveyRepository;
 import com.SurveyQuestionnaire.Questionnaire.Repository.UserRepository;
@@ -33,7 +34,12 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
     }
 
     @Override
-    public Survey save(Survey survey) {
+    public Survey save(SurveyModel surveyModel) {
+        Survey survey = new Survey();
+        survey.setTitle(surveyModel.getTitle());
+        survey.setDescription(surveyModel.getDescription());
         return surveyRepository.save(survey);
     }
+
+
 }

@@ -2,6 +2,7 @@ package com.SurveyQuestionnaire.Questionnaire.Controller;
 
 import com.SurveyQuestionnaire.Questionnaire.Entity.Survey;
 import com.SurveyQuestionnaire.Questionnaire.Entity.User;
+import com.SurveyQuestionnaire.Questionnaire.Model.SurveyModel;
 import com.SurveyQuestionnaire.Questionnaire.Model.UserModel;
 import com.SurveyQuestionnaire.Questionnaire.Service.QuestionnaireService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +28,11 @@ public class QuestionnaireController {
 
     }
     @PostMapping("/saveSurvey")
-    public Survey save(@RequestBody Survey survey){
-        return  questionnaireService.save(survey);
+    public String save(@RequestBody SurveyModel surveyModel) {
+        Survey survey = questionnaireService.save(surveyModel);
+        return "successfully saved";
     }
+
 //    @GetMapping("/verify-email")
 //    public String verifyEmail(@RequestParam("token") String token) {
 //         token = UUID.randomUUID().toString();

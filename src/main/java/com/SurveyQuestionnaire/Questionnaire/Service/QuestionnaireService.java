@@ -2,6 +2,7 @@ package com.SurveyQuestionnaire.Questionnaire.Service;
 
 import com.SurveyQuestionnaire.Questionnaire.Entity.Survey;
 import com.SurveyQuestionnaire.Questionnaire.Entity.User;
+import com.SurveyQuestionnaire.Questionnaire.Model.SurveyModel;
 import com.SurveyQuestionnaire.Questionnaire.Model.UserModel;
 
 public interface QuestionnaireService {
@@ -9,5 +10,6 @@ public interface QuestionnaireService {
 
     User getUserByVerificationToken(String token);
 
-    Survey save(Survey survey);
+
+    Survey save(SurveyModel surveyModel);
 }
