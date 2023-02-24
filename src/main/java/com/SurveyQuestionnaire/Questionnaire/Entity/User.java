@@ -20,7 +20,6 @@ public class User {
 @Email
     private String email;
     private Boolean logged=false;
-    private String verificationToken;
 
 
 }

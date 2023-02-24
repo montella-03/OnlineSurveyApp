@@ -13,6 +13,5 @@ public class UserModel {
     private String name;
        private String email;
     private String password;
-    private String verificationToken;
-    private String matchingPassword;
+        private String matchingPassword;
 }
